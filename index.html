@@ -1,0 +1,1519 @@
+<!--
+  ============================================================
+  IMAGE GUIDE — replace all files in the /media folder
+  All images free at https://unsplash.com (no attribution needed)
+  ============================================================
+  logo.png         → Your firm's logo (white version recommended)
+  hero-bg.jpg      → Search: "courthouse columns dramatic" or "law library dark"
+  about.jpg        → Search: "law office team professional"
+  attorney-1.jpg   → Search: "lawyer professional portrait"
+  attorney-2.jpg   → Search: "attorney professional headshot"
+  attorney-3.jpg   → Search: "professional lawyer suit portrait"
+  practice-1.jpg   → Motor Vehicle Accidents — Search: "semi truck highway collision" or "car accident road"
+  practice-2.jpg   → Premises Liability — Search: "wet floor hazard interior" or "staircase dark building"
+  practice-3.jpg   → Civil Litigation — Search: "courthouse interior columns" or "judge gavel courtroom"
+  practice-4.jpg   → Insurance Bad Faith — Search: "insurance documents denied" or "contract dispute paper"
+  ============================================================
+-->
+
+<!--
+  ============================================================
+  HOW TO CUSTOMISE THIS TEMPLATE
+  ============================================================
+  1. Replace all files in /media with your own images
+  2. Search for [ in the HTML — every placeholder is in brackets
+  3. Replace each [PLACEHOLDER] with your real content
+  4. Save and open index.html in any browser — done
+  ============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Law Group — Justice Without Compromise</title>
+  <meta name="description" content="Houston's premier personal injury and civil litigation firm, serving clients across Texas since 2003." />
+
+  <!-- Google Fonts: Cinzel + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ======================================================
+       TOKENS
+    ====================================================== */
+    :root {
+      --black:      #0A0A0A;
+      --black-mid:  #111111;
+      --black-card: #141414;
+      --black-lite: #1C1C1C;
+      --white:      #FFFFFF;
+      --white-dim:  rgba(255,255,255,0.72);
+      --white-faint:rgba(255,255,255,0.38);
+      --gold:       #C9A84C;
+      --gold-dim:   rgba(201,168,76,0.18);
+      --gold-rule:  rgba(201,168,76,0.45);
+
+      --font-display: 'Cinzel', serif;
+      --font-body:    'Cormorant Garamond', serif;
+
+      --nav-h:        72px;
+      --nav-h-shrunk: 56px;
+      --section-pad:  120px 0;
+      --ease:         0.3s ease;
+    }
+
+    /* ======================================================
+       RESET & BASE
+    ====================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ======================================================
+       UTILITY
+    ====================================================== */
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.1rem;
+    }
+
+    .gold-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.4rem 0;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .btn--filled {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .btn--filled:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    /* ======================================================
+       NAVIGATION
+    ====================================================== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: var(--black);
+      border-bottom: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(24px, 5vw, 72px);
+      transition: height var(--ease), border-color var(--ease), background var(--ease);
+      overflow: visible;
+    }
+
+    #nav.shrunk {
+      height: var(--nav-h-shrunk);
+      border-color: rgba(201,168,76,0.18);
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav__logo {
+      height: 110px;
+      width: auto;
+      transition: height var(--ease);
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    #nav.shrunk .nav__logo { height: 80px; }
+
+    .nav__links {
+      display: flex;
+      gap: 2.4rem;
+      align-items: center;
+    }
+
+    .nav__links a {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      transition: color var(--ease);
+    }
+
+    .nav__links a:hover { color: var(--gold); }
+
+    /* Hamburger */
+    .nav__burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav__burger span {
+      display: block;
+      width: 26px;
+      height: 1px;
+      background: var(--white);
+      transition: transform var(--ease), opacity var(--ease);
+    }
+
+    .nav__burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav__burger.open span:nth-child(2) { opacity: 0; }
+    .nav__burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(16px);
+      padding: 2.4rem clamp(24px, 5vw, 72px);
+      z-index: 999;
+      border-top: 1px solid var(--gold-rule);
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .nav__mobile.open { display: flex; }
+
+    .nav__mobile a {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--ease);
+    }
+
+    .nav__mobile a:last-child { border-bottom: none; }
+    .nav__mobile a:hover { color: var(--gold); }
+
+    /* ======================================================
+       HERO
+    ====================================================== */
+    #home {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('media/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 0 clamp(24px, 5vw, 48px);
+      padding-bottom: 110px; /* clears the scroll indicator */
+    }
+
+    .hero__eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 5.2rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--white-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 3rem;
+      opacity: 0;
+    }
+
+    .hero__ctas {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+    }
+
+    .hero__divider {
+      width: 1px;
+      height: 80px;
+      background: var(--gold-rule);
+      margin: 0 auto 2.4rem;
+      opacity: 0;
+    }
+
+    /* Fade-in animation — respects prefers-reduced-motion */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__eyebrow  { animation: fadeUp 0.9s  0.2s  ease forwards; }
+      .hero__divider  { animation: fadeUp 0.9s  0.45s ease forwards; }
+      .hero__title    { animation: fadeUp 0.9s  0.65s ease forwards; }
+      .hero__subtitle { animation: fadeUp 0.9s  0.85s ease forwards; }
+      .hero__ctas     { animation: fadeUp 0.9s  1.05s ease forwards; }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0);    }
+      }
+    }
+
+    /* No motion fallback — just make them visible */
+    @media (prefers-reduced-motion: reduce) {
+      .hero__eyebrow,
+      .hero__divider,
+      .hero__title,
+      .hero__subtitle,
+      .hero__ctas { opacity: 1; }
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 2.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+      pointer-events: none; /* never intercepts button clicks */
+    }
+
+    .hero__scroll span {
+      font-family: var(--font-display);
+      font-size: 0.52rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gold-rule);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(0.6); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero__scroll-line { animation: none; }
+    }
+
+    /* ======================================================
+       ABOUT
+    ====================================================== */
+    #about {
+      padding: var(--section-pad);
+      background: var(--black);
+    }
+
+    .about__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: clamp(40px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .about__img-wrap {
+      position: relative;
+    }
+
+    .about__img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+    }
+
+    /* Decorative gold frame offset */
+    .about__img-wrap::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--gold-rule);
+      z-index: -1;
+    }
+
+    .about__text .eyebrow { margin-bottom: 0.8rem; }
+
+    .about__body {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    .about__stats {
+      display: flex;
+      gap: 2.4rem;
+      margin-top: 2.8rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .about__stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      display: block;
+    }
+
+    .about__stat-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--white-faint);
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    .about__founder {
+      margin-top: 2rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white-faint);
+      font-style: italic;
+    }
+
+    /* ======================================================
+       PRACTICE AREAS
+    ====================================================== */
+    #practice {
+      padding: var(--section-pad);
+      background: var(--black-mid);
+    }
+
+    .practice__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto clamp(48px, 6vw, 80px);
+      padding: 0 clamp(24px, 5vw, 72px);
+    }
+
+    .practice__grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .practice__card {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      height: 420px;
+    }
+
+    .practice__card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s ease;
+      filter: grayscale(30%);
+    }
+
+    .practice__card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.15) 100%);
+      transition: background var(--ease);
+    }
+
+    .practice__card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.4rem 2rem;
+      border-top: 2px solid transparent;
+      transition: border-color var(--ease);
+    }
+
+    .practice__card-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .practice__card-desc {
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 1.2vw, 1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-dim);
+      max-width: 380px;
+    }
+
+    .practice__card:hover .practice__card-img {
+      transform: scale(1.04);
+      filter: grayscale(0%);
+    }
+
+    .practice__card:hover .practice__card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .practice__card:hover .practice__card-content {
+      border-top-color: var(--gold);
+    }
+
+    /* ======================================================
+       ATTORNEY PROFILES
+    ====================================================== */
+    #team {
+      padding: var(--section-pad);
+      background: var(--black);
+    }
+
+    .team__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto clamp(48px, 6vw, 80px);
+      padding: 0 clamp(24px, 5vw, 72px);
+    }
+
+    .team__grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 72px);
+      display: flex;
+      gap: 2.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* To add or remove attorneys, duplicate or delete a .team__card block */
+    .team__card {
+      flex: 0 0 clamp(240px, 28%, 300px);
+      background: var(--black-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      padding: 2.4rem 2rem 2.2rem;
+      transition: transform var(--ease), border-color var(--ease);
+    }
+
+    .team__card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-rule);
+    }
+
+    .team__photo-wrap {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.4rem;
+      border: 2px solid var(--gold-rule);
+    }
+
+    .team__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+      transition: filter var(--ease);
+    }
+
+    .team__card:hover .team__photo { filter: grayscale(0%); }
+
+    .team__name {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .team__role {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white-faint);
+      letter-spacing: 0.04em;
+    }
+
+    .team__bio {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .team__divider {
+      width: 28px;
+      height: 1px;
+      background: var(--gold-rule);
+      margin: 1rem auto;
+    }
+
+    /* ======================================================
+       TESTIMONIALS
+    ====================================================== */
+    #testimonials {
+      padding: var(--section-pad);
+      background: var(--black-mid);
+    }
+
+    .testimonials__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto clamp(48px, 6vw, 80px);
+      padding: 0 clamp(24px, 5vw, 72px);
+    }
+
+    .testimonials__grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial__card {
+      background: var(--black-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.8rem 2.2rem 2.4rem;
+      position: relative;
+      transition: transform var(--ease), border-color var(--ease);
+    }
+
+    .testimonial__card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-rule);
+    }
+
+    .testimonial__mark {
+      font-family: var(--font-body);
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      display: block;
+      font-weight: 300;
+    }
+
+    .testimonial__text {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial__line {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .testimonial__name {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+    }
+
+    /* ======================================================
+       CONSULTATION CTA BANNER
+    ====================================================== */
+    #contact {
+      padding: 100px clamp(24px, 5vw, 72px);
+      background: var(--black);
+      text-align: center;
+      position: relative;
+    }
+
+    .cta__rule {
+      width: 100%;
+      height: 1px;
+      background: var(--gold-rule);
+      position: absolute;
+      left: 0;
+    }
+
+    .cta__rule--top { top: 0; }
+    .cta__rule--bottom { bottom: 0; }
+
+    .cta__inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      line-height: 1.2;
+      margin-bottom: 1.4rem;
+    }
+
+    .cta__sub {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 2.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    .cta__buttons {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ======================================================
+       FOOTER
+    ====================================================== */
+    footer {
+      background: var(--black-mid);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 72px clamp(24px, 5vw, 72px) 40px;
+    }
+
+    .footer__grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__logo { height: 110px; margin-bottom: 1rem; }
+
+    .footer__tagline {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white-faint);
+      line-height: 1.6;
+      margin-bottom: 1.6rem;
+    }
+
+    .footer__social {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .footer__social a {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--ease), color var(--ease);
+    }
+
+    .footer__social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer__social svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      color: var(--white-dim);
+      transition: color var(--ease);
+    }
+
+    .footer__social a:hover svg { color: var(--gold); }
+
+    .footer__col-title {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer__links a {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--white-dim);
+      letter-spacing: 0.02em;
+      transition: color var(--ease);
+    }
+
+    .footer__links a:hover { color: var(--gold); }
+
+    .footer__contact-line {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer__contact-label {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+      flex-shrink: 0;
+      min-width: 30px;
+    }
+
+    .footer__contact-val {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .footer__contact-val a {
+      transition: color var(--ease);
+    }
+
+    .footer__contact-val a:hover { color: var(--gold); }
+
+    .footer__bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__copy {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+    }
+
+    /* ======================================================
+       SECTION REVEAL (scroll-triggered)
+    ====================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ======================================================
+       RESPONSIVE
+    ====================================================== */
+
+    /* ── Tablet: 900px ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --section-pad: 90px 0; }
+
+      /* About */
+      .about__inner { grid-template-columns: 1fr; }
+      .about__img { height: 380px; }
+      .about__img-wrap::after { display: none; }
+
+      /* Practice */
+      .practice__grid { grid-template-columns: 1fr; }
+      .practice__card { height: 360px; }
+
+      /* Testimonials */
+      .testimonials__grid { grid-template-columns: 1fr; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+      /* Footer */
+      .footer__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── Mobile: 768px ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad: 72px 0;
+        --nav-h: 76px;
+        --nav-h-shrunk: 60px;
+      }
+
+      /* Nav */
+      .nav__links { display: none; }
+      .nav__burger { display: flex; }
+      .nav__logo { height: 84px; }
+      #nav.shrunk .nav__logo { height: 64px; }
+
+      /* Hero */
+      .hero__title { letter-spacing: 0.05em; }
+      .hero__ctas { flex-direction: column; align-items: center; }
+      .hero__ctas .btn { width: 100%; max-width: 300px; text-align: center; }
+      .hero__scroll { display: none; }
+      .hero__content { padding-bottom: 40px; }
+
+      /* About */
+      .about__img { height: 300px; }
+      .about__stats { gap: 1.6rem; }
+
+      /* Practice */
+      .practice__card { height: 320px; }
+      .practice__card-content { padding: 1.8rem 1.4rem; }
+
+      /* Team — stack full-width on mobile */
+      .team__grid { flex-direction: column; align-items: center; }
+      .team__card {
+        flex: none;
+        width: 100%;
+        max-width: 480px;
+      }
+
+      /* Testimonials */
+      .testimonials__grid { padding: 0 clamp(16px, 4vw, 48px); }
+      .testimonial__card { padding: 2rem 1.6rem 1.8rem; }
+
+      /* CTA */
+      .cta__buttons { flex-direction: column; align-items: center; }
+      .cta__buttons .btn { width: 100%; max-width: 300px; text-align: center; }
+
+      /* Footer */
+      .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    /* ── Small mobile: 480px ───────────────────────────── */
+    @media (max-width: 480px) {
+      :root { --section-pad: 56px 0; }
+
+      /* Nav */
+      .nav__logo { height: 68px; }
+      #nav.shrunk .nav__logo { height: 54px; }
+      #nav { padding: 0 20px; }
+      .nav__mobile { padding: 2rem 20px; }
+
+      /* Hero */
+      .hero__divider { height: 48px; }
+
+      /* About */
+      .about__inner { padding: 0 20px; }
+      .about__img { height: 260px; }
+      .about__stats { flex-direction: column; gap: 1.2rem; }
+      .about__stat-num { font-size: 1.8rem; }
+
+      /* Practice */
+      .practice__grid { padding: 0 20px; gap: 12px; }
+      .practice__card { height: 270px; }
+      .practice__card-title { font-size: 0.85rem; }
+      .practice__card-desc { font-size: 0.88rem; }
+
+      /* Team */
+      .team__grid { padding: 0 20px; }
+      .team__card { padding: 2rem 1.4rem; }
+
+      /* Testimonials */
+      .testimonials__grid { padding: 0 20px; }
+
+      /* CTA */
+      #contact { padding: 72px 20px; }
+      .cta__title { font-size: 1.6rem; }
+
+      /* Footer */
+      footer { padding: 56px 20px 32px; }
+      .footer__grid { gap: 32px; }
+      .footer__logo { height: 90px; }
+      .footer__bottom { padding-top: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#home" aria-label="Go to homepage">
+      <img src="media/logo.png" alt="XYZ Law Group logo" class="nav__logo" />
+    </a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#practice">Practice Areas</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="nav__burger" id="burger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="mobileMenu" role="menu">
+    <a href="#home"         role="menuitem" onclick="closeMenu()">Home</a>
+    <a href="#practice"    role="menuitem" onclick="closeMenu()">Practice Areas</a>
+    <a href="#about"       role="menuitem" onclick="closeMenu()">About</a>
+    <a href="#testimonials" role="menuitem" onclick="closeMenu()">Testimonials</a>
+    <a href="#contact"     role="menuitem" onclick="closeMenu()">Contact</a>
+  </div>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="home" aria-label="Hero">
+    <div class="hero__bg" role="img" aria-label="Firm background image"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="hero__eyebrow">Personal Injury &amp; Civil Litigation · Houston, Texas</span>
+      <div class="hero__divider" aria-hidden="true"></div>
+      <h1 class="hero__title">Justice Without Compromise</h1>
+      <p class="hero__subtitle">Trusted counsel. Unwavering advocacy. Results that matter.</p>
+      <div class="hero__ctas">
+        <a href="tel:+17135550192" class="btn btn--filled">(713) 555-0192</a>
+        <a href="#contact" class="btn">Free Consultation</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT THE FIRM
+  ============================================================ -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="about__inner">
+
+      <div class="about__img-wrap reveal">
+        <img
+          src="media/about.jpg"
+          alt="The team at XYZ Law Group"
+          class="about__img"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="about__text reveal">
+        <span class="eyebrow">About the Firm</span>
+        <h2 id="about-heading" class="section-title">XYZ Law Group</h2>
+        <div class="gold-rule"></div>
+        <p class="about__body">
+          Founded in 2003 by Daniel R. Voss, XYZ Law Group has spent over two decades building a reputation for uncompromising legal excellence across Houston and the greater Texas Gulf Coast. We combine deep statutory knowledge with aggressive courtroom advocacy to deliver outcomes that protect what matters most to our clients.
+        </p>
+        <p class="about__body">
+          Our firm has never lost sight of a simple principle: injured people deserve powerful representation. We take cases on contingency — you pay nothing unless we win — and every client receives direct access to their attorney from day one.
+        </p>
+
+        <div class="about__stats">
+          <div>
+            <span class="about__stat-num">2003</span>
+            <div class="about__stat-label">Year Founded</div>
+          </div>
+          <div>
+            <span class="about__stat-num">1,400+</span>
+            <div class="about__stat-label">Cases Won</div>
+          </div>
+          <div>
+            <span class="about__stat-num">3,200+</span>
+            <div class="about__stat-label">Clients Served</div>
+          </div>
+        </div>
+
+        <p class="about__founder">— Daniel R. Voss, J.D., Founding Partner</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PRACTICE AREAS
+  ============================================================ -->
+  <section id="practice" aria-labelledby="practice-heading">
+    <div class="practice__header reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 id="practice-heading" class="section-title">Our Practice Areas</h2>
+      <div class="gold-rule gold-rule--center"></div>
+    </div>
+
+    <div class="practice__grid">
+
+      <!-- Card 1: Motor Vehicle Accidents (image file: practice-1.jpg) -->
+      <article class="practice__card reveal" aria-label="Motor Vehicle Accidents">
+        <img src="media/practice-1.jpg" alt="Motor vehicle accident scene" class="practice__card-img" loading="lazy" />
+        <div class="practice__card-overlay"></div>
+        <div class="practice__card-content">
+          <h3 class="practice__card-title">Motor Vehicle Accidents</h3>
+          <p class="practice__card-desc">Semi-truck collisions, motorcycle crashes, pedestrian incidents, and uninsured motorist arbitration — we fight for your rightful recovery.</p>
+        </div>
+      </article>
+
+      <!-- Card 2: Premises Liability (image file: practice-2.jpg) -->
+      <article class="practice__card reveal" aria-label="Premises Liability">
+        <img src="media/practice-2.jpg" alt="Hazardous premises conditions" class="practice__card-img" loading="lazy" />
+        <div class="practice__card-overlay"></div>
+        <div class="practice__card-content">
+          <h3 class="practice__card-title">Premises Liability</h3>
+          <p class="practice__card-desc">Hazardous floors, unsafe stairs, dangerous conditions — if a property owner's negligence caused your injury, we hold them accountable.</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Civil Litigation (image file: practice-3.jpg) -->
+      <article class="practice__card reveal" aria-label="Civil Litigation">
+        <img src="media/practice-3.jpg" alt="Courthouse civil litigation" class="practice__card-img" loading="lazy" />
+        <div class="practice__card-overlay"></div>
+        <div class="practice__card-content">
+          <h3 class="practice__card-title">Civil Litigation</h3>
+          <p class="practice__card-desc">From wrongful death to construction incidents, our trial-ready team navigates complex civil matters with precision and tenacity.</p>
+        </div>
+      </article>
+
+      <!-- Card 4: Insurance Bad Faith (image file: practice-4.jpg) -->
+      <article class="practice__card reveal" aria-label="Insurance Bad Faith">
+        <img src="media/practice-4.jpg" alt="Insurance bad faith claim documents" class="practice__card-img" loading="lazy" />
+        <div class="practice__card-overlay"></div>
+        <div class="practice__card-content">
+          <h3 class="practice__card-title">Insurance Bad Faith</h3>
+          <p class="practice__card-desc">When insurers wrongfully deny or delay valid claims, we pursue every legal avenue to secure the compensation you are owed.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ATTORNEY PROFILES
+       To add an attorney: duplicate any .team__card block.
+       To remove an attorney: delete the entire .team__card block.
+  ============================================================ -->
+  <section id="team" aria-labelledby="team-heading">
+    <div class="team__header reveal">
+      <span class="eyebrow">Our Counsel</span>
+      <h2 id="team-heading" class="section-title">Meet the Attorneys</h2>
+      <div class="gold-rule gold-rule--center"></div>
+    </div>
+
+    <div class="team__grid">
+
+      <!-- Attorney 1 -->
+      <article class="team__card reveal">
+        <div class="team__photo-wrap">
+          <img src="media/attorney-1.jpg" alt="Portrait of Daniel R. Voss" class="team__photo" loading="lazy" />
+        </div>
+        <div class="team__divider"></div>
+        <h3 class="team__name">Daniel R. Voss</h3>
+        <p class="team__role">Managing Partner</p>
+        <p class="team__bio">Daniel founded XYZ Law Group in 2003 after a decade as a defense-side insurance litigator. That background gives him a rare edge: he knows precisely how carriers build their cases — and exactly where they're vulnerable. He has tried over 80 cases to verdict across Texas state and federal courts.</p>
+      </article>
+
+      <!-- Attorney 2 -->
+      <article class="team__card reveal">
+        <div class="team__photo-wrap">
+          <img src="media/attorney-2.jpg" alt="Portrait of Catherine L. Mercer" class="team__photo" loading="lazy" />
+        </div>
+        <div class="team__divider"></div>
+        <h3 class="team__name">Catherine L. Mercer</h3>
+        <p class="team__role">Senior Partner</p>
+        <p class="team__bio">Catherine leads the firm's motor vehicle and premises liability practice. A University of Texas School of Law graduate, she has secured over $47 million in verdicts and settlements for injured Texans since joining the firm in 2006. Her reputation for thorough preparation makes her one of the most sought-after trial attorneys in Harris County.</p>
+      </article>
+
+      <!-- Attorney 3 -->
+      <article class="team__card reveal">
+        <div class="team__photo-wrap">
+          <img src="media/attorney-3.jpg" alt="Portrait of James A. Pruitt" class="team__photo" loading="lazy" />
+        </div>
+        <div class="team__divider"></div>
+        <h3 class="team__name">James A. Pruitt</h3>
+        <p class="team__role">Associate Attorney</p>
+        <p class="team__bio">James handles civil litigation and insurance bad faith matters with a methodical intensity that belies his ten years at the firm. A South Texas College of Law alumnus, he has become the firm's go-to counsel when insurers engage in delay or denial tactics — and has a record of forcing carriers back to the table.</p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="testimonials__header reveal">
+      <span class="eyebrow">Client Voices</span>
+      <h2 id="testimonials-heading" class="section-title">What Our Clients Say</h2>
+      <div class="gold-rule gold-rule--center"></div>
+    </div>
+
+    <div class="testimonials__grid">
+
+      <!-- Testimonial 1 -->
+      <blockquote class="testimonial__card reveal">
+        <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+        <p class="testimonial__text">After my accident, I didn't know where to turn. This firm took my case seriously from day one, kept me informed at every step, and ultimately secured a settlement far beyond what I expected. I am forever grateful for their relentless advocacy.</p>
+        <footer class="testimonial__author">
+          <div class="testimonial__line" aria-hidden="true"></div>
+          <cite class="testimonial__name">— Marcus T., Motor Vehicle Accident Client</cite>
+        </footer>
+      </blockquote>
+
+      <!-- Testimonial 2 -->
+      <blockquote class="testimonial__card reveal">
+        <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+        <p class="testimonial__text">The insurance company stonewalled us for months. Within weeks of retaining this firm, the entire dynamic changed. They know exactly how to apply pressure where it counts, and they never let up until we had justice.</p>
+        <footer class="testimonial__author">
+          <div class="testimonial__line" aria-hidden="true"></div>
+          <cite class="testimonial__name">— Sandra R., Insurance Bad Faith Client</cite>
+        </footer>
+      </blockquote>
+
+      <!-- Testimonial 3 -->
+      <blockquote class="testimonial__card reveal">
+        <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+        <p class="testimonial__text">I was injured on someone else's property and felt completely powerless. The attorneys here treated my case — and me — with dignity and seriousness. The outcome spoke for itself. I would trust them without hesitation.</p>
+        <footer class="testimonial__author">
+          <div class="testimonial__line" aria-hidden="true"></div>
+          <cite class="testimonial__name">— Patricia L., Premises Liability Client</cite>
+        </footer>
+      </blockquote>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONSULTATION CTA BANNER
+  ============================================================ -->
+  <section id="contact" aria-labelledby="cta-heading">
+    <div class="cta__rule cta__rule--top" aria-hidden="true"></div>
+    <div class="cta__inner reveal">
+      <span class="eyebrow">Take the First Step</span>
+      <h2 id="cta-heading" class="cta__title">Your Case Deserves Our Full Attention</h2>
+      <p class="cta__sub">We offer free, confidential consultations — speak directly with an attorney, not a paralegal, and get honest answers about your options.</p>
+      <div class="cta__buttons">
+        <a href="tel:+17135550192" class="btn btn--filled">(713) 555-0192</a>
+        <a href="mailto:xyz@xyzlawgroup.com?subject=Consultation%20Request" class="btn">Schedule a Consultation</a>
+      </div>
+    </div>
+    <div class="cta__rule cta__rule--bottom" aria-hidden="true"></div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="footer__grid">
+
+      <!-- Column 1: Brand -->
+      <div>
+        <img src="media/logo.png" alt="XYZ Law Group logo" class="footer__logo" loading="lazy" />
+        <p class="footer__tagline">Justice Without Compromise</p>
+        <nav class="footer__social" aria-label="Social media">
+          <!-- Facebook -->
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="var(--black)" stroke-width="2"/></svg>
+          </a>
+          <!-- Twitter / X -->
+          <a href="#" aria-label="Twitter / X" title="Twitter / X">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16M20 4 4 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Column 2: Practice Areas -->
+      <div>
+        <p class="footer__col-title">Practice Areas</p>
+        <nav class="footer__links" aria-label="Practice areas">
+          <a href="#practice">Motor Vehicle Accidents</a>
+          <a href="#practice">Premises Liability</a>
+          <a href="#practice">Civil Litigation</a>
+          <a href="#practice">Insurance Bad Faith</a>
+        </nav>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div>
+        <p class="footer__col-title">Contact Us</p>
+        <address style="font-style:normal;">
+          <div class="footer__contact-line">
+            <span class="footer__contact-label">Addr</span>
+            <span class="footer__contact-val">
+              1200 Main Street, Suite 800<br />
+              Houston, TX 77002
+            </span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-label">Tel</span>
+            <span class="footer__contact-val">
+              <a href="tel:+17135550192">(713) 555-0192</a>
+            </span>
+          </div>
+          <!-- FAX line — remove this block if you don't need it -->
+          <div class="footer__contact-line">
+            <span class="footer__contact-label">Fax</span>
+            <span class="footer__contact-val">(713) 555-0193</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-label">Email</span>
+            <span class="footer__contact-val">
+              <a href="mailto:xyz@xyzlawgroup.com">xyz@xyzlawgroup.com</a>
+            </span>
+          </div>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span class="footer__copy">
+        &copy; 2025 XYZ Law Group. All Rights Reserved.
+      </span>
+      <span class="footer__copy" style="color: rgba(255,255,255,0.2);">
+        Attorney Advertising. Prior results do not guarantee a similar outcome.
+      </span>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — no libraries, vanilla only
+  ============================================================ -->
+  <script>
+    // ── Nav: shrink on scroll ──────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('shrunk', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Hamburger menu ─────────────────────────────────────────
+    const burger     = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // ── Scroll-reveal (IntersectionObserver) ──────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Active nav link highlight ──────────────────────────────
+    const sections  = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav__links a, .nav__mobile a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + entry.target.id
+              ? 'var(--gold)'
+              : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+
+</body>
+</html>
